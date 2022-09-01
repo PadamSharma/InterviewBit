@@ -179,3 +179,62 @@ select Doctor, Professor, Singer, Actor from (
 
 <hr>
 <hr>
+
+## A **median** is defined as a number separating the higher half of a data set from the lower half. Query the median of the Northern Latitudes (LAT_N) from STATION and round your answer to decimal places. 
+
+```sql
+select round(avg(LAT_N),4) from (
+select LAT_N, ROW_NUMBER() over(order by LAT_N desc) as rownum from STATION
+) as a where a.rownum <= ceil(((select count(*) from STATION)+1)/2) and a.rownum >= floor(((select count(*) from STATION)+1)/2)
+```
+
+<hr>
+<hr>
+
+## You are given a table, BST, containing two columns: N and P, where N represents the value of a node in Binary Tree, and P is the parent of N.
+
+Write a query to find the node type of Binary Tree ordered by the value of the node. Output one of the following for each node:
+
+    Root: If node is root node.
+    Leaf: If node is leaf node.
+    Inner: If node is neither root nor leaf node.
+
+
+```sql
+select N,
+case when P is NULL then 'Root'
+     when N in (select P from BST) then 'Inner'
+     else 'Leaf'
+end
+from BST order by N
+```
+
+<hr>
+<hr>
+
+## 
+
+```sql
+
+```
+
+<hr>
+<hr>
+
+## 
+
+```sql
+
+```
+
+<hr>
+<hr>
+
+## 
+
+```sql
+
+```
+
+<hr>
+<hr>
